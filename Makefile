@@ -1,0 +1,3 @@
+wrapper: gige.cxx
+	g++ -c -O2 -fPIC methods.cxx gige.cxx /usr/local/src/GigEVisionSDK/examples/cpp/_Common/Common.cpp /usr/local/src/GigEVisionSDK/include/gige_cpp/GigEVisionSDK.cpp  -I/usr/local/src/GigEVisionSDK/include -I/usr/local/src/GigEVisionSDK/examples/cpp/_Common -L/usr/local/lib/ -lGigEVisionSDK -I/usr/include/python2.7 -I. -I/usr/lib/python2.7/dist-packages/numpy/core/include
+	g++ -shared gige.o methods.o GigEVisionSDK.o Common.o -o gige.so -L/usr/local/lib/ -lGigEVisionSDK
