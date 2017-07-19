@@ -93,7 +93,23 @@ gige::IDevice setup(void) {
 
 }
 
+/*
+bool setStringProperty(gige::IDevice device, std::string property, std::string value) {
+    return device->SetStringNodeValue(property, value);
+}
 
+std::string getStringProperty(gige::IDevice device, std::string property) {
+    return device->GetStringNodeValue(property);
+}
+
+bool setIntegerProperty(gige::IDevice device, std::string property, int value) {
+    return device->SetIntegerNodeValue(property, value);
+}
+
+int getIntegerProperty(gige::IDevice device, std::string property) {
+    return device->GetStringNodeValue(property, );
+}
+*/
 
 Frame getFrame(gige::IDevice device, float timeout) {
 	// wait for image for 3 seconds
@@ -109,7 +125,7 @@ Frame getFrame(gige::IDevice device, float timeout) {
 			
 			int size = imageInfo->GetRawDataSize();
 			UINT8* buffer = new UINT8[size];
-			std::memcpy(imageInfo->GetRawData(), buffer, size);
+			std::memcpy(buffer, imageInfo->GetRawData(), sizeof(UINT8) * size);
 			frame.data = buffer;
 
 			bool result = imageInfo->GetSize(frame.x, frame.y);
