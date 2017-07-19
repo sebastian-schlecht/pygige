@@ -1,4 +1,4 @@
-#include <gige.hpp>
+#include <methods.hpp>
 
 gige::IDevice setup(void) {
 	// number of images to be allocated in buffer
@@ -76,7 +76,7 @@ gige::IDevice setup(void) {
 			status = device->SetIntegerNodeValue("TLParamsLocked", 1);
 			status = device->CommandNodeExecute("AcquisitionStart");
 
-			std::cout << "Acquisition start" << std::endl;
+			std::cout << "Acquisition Start, press any key to exit loop..." << std::endl;
 			
 			//return device;
 			return device;
@@ -93,23 +93,7 @@ gige::IDevice setup(void) {
 
 }
 
-/*
-bool setStringProperty(gige::IDevice device, std::string property, std::string value) {
-    return device->SetStringNodeValue(property, value);
-}
 
-std::string getStringProperty(gige::IDevice device, std::string property) {
-    return device->GetStringNodeValue(property);
-}
-
-bool setIntegerProperty(gige::IDevice device, std::string property, int value) {
-    return device->SetIntegerNodeValue(property, value);
-}
-
-int getIntegerProperty(gige::IDevice device, std::string property) {
-    return device->GetStringNodeValue(property, );
-}
-*/
 
 Frame getFrame(gige::IDevice device, float timeout) {
 	// wait for image for 3 seconds
@@ -125,7 +109,7 @@ Frame getFrame(gige::IDevice device, float timeout) {
 			
 			int size = imageInfo->GetRawDataSize();
 			UINT8* buffer = new UINT8[size];
-			std::memcpy(buffer, imageInfo->GetRawData(), sizeof(UINT8) * size);
+			std::memcpy(imageInfo->GetRawData(), buffer, size);
 			frame.data = buffer;
 
 			bool result = imageInfo->GetSize(frame.x, frame.y);

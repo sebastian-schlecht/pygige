@@ -13,7 +13,6 @@ py_setup(PyObject *self, PyObject *args) {
     PyObject *pObj = NULL;
     gige::IDevice device = setup();
     gige::IDevice* ptr = new gige::IDevice(device);
-    Frame f = getFrame(*ptr, 3);
     if(device != NULL) {
        return PyCapsule_New(ptr, "Device", py_close); 
     }
@@ -41,6 +40,7 @@ py_get_frame(PyObject *self, PyObject *args) {
                                       dims,
                                       NPY_UINT8,
                                       f.data);
+    PyArray_ENABLEFLAGS(array, NPY_ARRAY_OWNDATA);
     return (PyObject*)array;
 };
 
