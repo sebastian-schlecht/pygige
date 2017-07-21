@@ -5,7 +5,7 @@ Highly experimental python wrapper for GigE Machine Vision Cameras
 This software is highly experimental and there is no guarantee that it'll work.
 
 ## Installation
-Once you followed instructions from (here)[https://www.smartek.vision/media/downloads/SMARTEKVision_GigEVisionSDK_Linux_Readme.txt], clone this repository and run ```make```. You'll get a file ```pygige.so``` which you can import via ```import gige```.
+Once you followed instructions from [here](https://www.smartek.vision/media/downloads/SMARTEKVision_GigEVisionSDK_Linux_Readme.txt), clone this repository and run ```make```. You'll get a file ```pygige.so``` which you can import via ```import gige```.
 
 ## Usage
 To setup the first camera, run
